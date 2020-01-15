@@ -6,7 +6,7 @@ import logging
 import os
 from dotenv import load_dotenv
 from bot.middlewares import UsersRegistrationMiddleware
-from bot.blueprints import karma_bp, message_bp
+from bot.blueprints import karma_bp, message_bp, add_karma_bp
 
 
 load_dotenv()
@@ -16,9 +16,10 @@ dp = Dispatcher(vk)
 
 
 async def run():
+    dp.setup_middleware(UsersRegistrationMiddleware())
+    dp.setup_blueprint(add_karma_bp)
     dp.setup_blueprint(karma_bp)
     dp.setup_blueprint(message_bp)  # Этот всегда регать последним
-    dp.setup_middleware(UsersRegistrationMiddleware())
     group_id = await get_group_id(vk)
     dp.run_polling(group_id)
 
