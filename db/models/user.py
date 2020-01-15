@@ -38,3 +38,8 @@ class User(umongo.Document):
         user_karma = int(current["karma"]) + karma_value
         user.update({"karma": user_karma})
         await user.commit()
+
+    @staticmethod
+    async def change_nick(user: "User", nickname: str) -> None:
+        user.update({"nickname": nickname})
+        await user.commit()
