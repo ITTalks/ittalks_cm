@@ -6,5 +6,5 @@ bp = Blueprint()
 
 @bp.message_handler(in_chat=True)
 async def message(_, data: dict):
-    user: User = data['current_user']
+    user: User = data["current_user"]
     await User.add_carma(user, 1)

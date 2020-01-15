@@ -7,6 +7,6 @@ bp = Blueprint()
 
 @bp.message_handler(commands=["karma"])
 async def karma_info(message: types.Message, data: dict):
-    user: User = data['current_user']
+    user: User = data["current_user"]
     user_karma = user.karma
     await message.answer(f"Ваша карма - {user_karma}")

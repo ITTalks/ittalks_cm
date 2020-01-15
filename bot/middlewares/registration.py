@@ -9,7 +9,9 @@ logger = logging.getLogger(__name__)
 
 
 class UsersRegistrationMiddleware(BaseMiddleware):
-    async def pre_process_event(self, event: typing.Type[BaseEvent], data: dict) -> dict:
+    async def pre_process_event(
+        self, event: typing.Type[BaseEvent], data: dict
+    ) -> dict:
         if event.type != "message_new":
             return data
 
@@ -21,7 +23,9 @@ class UsersRegistrationMiddleware(BaseMiddleware):
             return data
 
         usr = await User.create_user(uid=event.object.message.from_id)
-        logger.info(f"User with id ({event.object.message.from_id}) succesfully registered!")
+        logger.info(
+            f"User with id ({event.object.message.from_id}) succesfully registered!"
+        )
         data["current_user"] = usr
         return data
 
