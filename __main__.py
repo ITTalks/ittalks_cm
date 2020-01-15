@@ -5,6 +5,8 @@ from vk.bot_framework import get_group_id
 import logging
 import os
 from dotenv import load_dotenv
+from bot.middlewares import UsersRegistrationMiddleware
+from bot.blueprints import karma_bp, message_bp
 
 
 load_dotenv()
@@ -14,6 +16,9 @@ dp = Dispatcher(vk)
 
 
 async def run():
+    dp.setup_blueprint(karma_bp)
+    dp.setup_blueprint(message_bp)  # Этот всегда регать последним
+    dp.setup_middleware(UsersRegistrationMiddleware())
     group_id = await get_group_id(vk)
     dp.run_polling(group_id)
 
