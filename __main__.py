@@ -1,9 +1,10 @@
+import logging
+import os
+
 from vk.utils import TaskManager
 from vk import VK
 from vk.bot_framework import Dispatcher
 from vk.bot_framework import get_group_id
-import logging
-import os
 from dotenv import load_dotenv
 from bot.middlewares import UsersRegistrationMiddleware
 from bot.blueprints import (
