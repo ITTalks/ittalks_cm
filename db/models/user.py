@@ -17,6 +17,7 @@ class User(umongo.Document):
     nickname = fields.StringField()
     karma = fields.IntegerField(default=0)
     warns = fields.IntegerField(default=0)
+    last_message_time = fields.IntegerField(default=time.time)
 
     class Meta:
         collection = instance.db.users
