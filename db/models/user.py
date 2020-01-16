@@ -22,8 +22,8 @@ class User(umongo.Document):
         collection = instance.db.users
 
     @staticmethod
-    async def create_user(uid: int) -> typing.Union["User", typing.NoReturn]:
-        user: User = User(uid=uid, nickname=str(uid))
+    async def create_user(uid: int, nickname: str) -> typing.Union["User", typing.NoReturn]:
+        user: User = User(uid=uid, nickname=nickname)
         await user.commit()
         return user
 
