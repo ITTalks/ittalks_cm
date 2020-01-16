@@ -1,7 +1,7 @@
 from vk import types
 from vk.bot_framework.dispatcher import Blueprint
 from db.models.user import User
-from .config import karma_bad, karma_good, karma_minus, karma_plus
+from bot.blueprints.karma.config import karma_bad, karma_good, karma_minus, karma_plus
 
 bp = Blueprint()
 
