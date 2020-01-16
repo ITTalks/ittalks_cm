@@ -25,11 +25,11 @@ dp = Dispatcher(vk)
 async def run():
     dp.setup_middleware(UsersRegistrationMiddleware())
     dp.setup_blueprint(karma_top_bp)
-    dp.setup_blueprint(add_karma_bp)
     dp.setup_blueprint(karma_bp)
     dp.setup_blueprint(nick_bp)
     dp.setup_blueprint(info_bp)
-    dp.setup_blueprint(message_bp)  # Этот всегда регать последним
+    dp.setup_blueprint(add_karma_bp)
+    dp.setup_blueprint(message_bp)  # порядок рега блупринтов не менять!!1
     group_id = await get_group_id(vk)
     dp.run_polling(group_id)
 
