@@ -10,9 +10,7 @@ bp = Blueprint()
 async def karma_info(message: types.Message, data: dict):
     if message.reply_message is None:
         user: User = data["current_user"]
-        user_karma = user.karma
-        await message.answer(f"Ваша карма - {user_karma}")
+        await message.answer(f"Ваша карма - {user.karma}")
     else:
         user: User = await User.get_user(uid=message.reply_message.from_id)
-        user_karma = user.karma
-        await message.answer(f"Карма {user.nickname} - {user_karma}")
+        await message.answer(f"Карма {user.nickname} - {user.karma}")

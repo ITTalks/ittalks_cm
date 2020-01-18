@@ -13,8 +13,6 @@ async def add_karma(message: types.Message, _):
     if message.text.lower() in karma_good:
         user: User = await User.get_user(message.reply_message.from_id)
         await user.add_carma(user, karma_plus)
-        await message.answer(f"Карма {user.nickname} обновлена - {user.karma}")
     elif message.text.lower() in karma_bad:
         user: User = await User.get_user(message.reply_message.from_id)
         await user.add_carma(user, karma_minus)
-        await message.answer(f"Карма {user.nickname} обновлена - {user.karma}")
