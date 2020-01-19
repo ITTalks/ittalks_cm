@@ -14,6 +14,7 @@ from bot.blueprints import (
     karma_top_bp,
     nick_bp,
     info_bp,
+    call_bp
 )
 
 
@@ -30,9 +31,11 @@ async def run():
     dp.setup_blueprint(nick_bp)
     dp.setup_blueprint(info_bp)
     dp.setup_blueprint(add_karma_bp)
+    dp.setup_blueprint(call_bp)
+
+    # Всегда должен быть последним.
     dp.setup_blueprint(message_bp)  # порядок рега блупринтов не менять!!1
-    group_id = await get_group_id(vk)
-    dp.run_polling(group_id)
+    dp.run_polling(await get_group_id(vk))
 
 
 if __name__ == "__main__":
