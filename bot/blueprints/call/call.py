@@ -5,6 +5,6 @@ from bot.rules.admin import IsAdmin
 bp = Blueprint()
 
 
-@bp.message_handler(IsAdmin(True), commands=["call"])
-async def call_command(message: types.Message, data: dict):
-    await message.answer(f"debug: {dict}")
+@bp.message_handler(IsAdmin(True), commands=["call"], in_chat=True)
+async def call_command(message: types.Message, _):
+    await message.answer(f"debug: {message}")

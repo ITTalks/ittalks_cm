@@ -7,6 +7,7 @@ from vk.bot_framework import Dispatcher
 from vk.bot_framework import get_group_id
 from dotenv import load_dotenv
 from bot.middlewares import UsersRegistrationMiddleware
+from bot.rules import ArgsRange
 from bot.blueprints import (
     karma_bp,
     message_bp,
@@ -26,9 +27,10 @@ dp = Dispatcher(vk)
 
 async def run():
     dp.setup_middleware(UsersRegistrationMiddleware())
+    dp.setup_rule(ArgsRange)
+    dp.setup_blueprint(nick_bp)
     dp.setup_blueprint(karma_top_bp)
     dp.setup_blueprint(karma_bp)
-    dp.setup_blueprint(nick_bp)
     dp.setup_blueprint(info_bp)
     dp.setup_blueprint(add_karma_bp)
     dp.setup_blueprint(call_bp)
