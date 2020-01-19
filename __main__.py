@@ -7,7 +7,7 @@ from vk.bot_framework import Dispatcher
 from vk.bot_framework import get_group_id
 from dotenv import load_dotenv
 from bot.middlewares import UsersRegistrationMiddleware
-from bot.rules import ArgsRange
+from bot.named_rules import ArgsRange
 from bot.blueprints import (
     karma_bp,
     message_bp,
