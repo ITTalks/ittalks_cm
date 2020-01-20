@@ -1,5 +1,6 @@
-from vk.bot_framework.dispatcher.rule import NamedRule
 import typing
+
+from vk.bot_framework.dispatcher.rule import NamedRule
 from vk import types
 
 

@@ -15,7 +15,10 @@ from bot.blueprints import (
     karma_top_bp,
     nick_bp,
     info_bp,
-    call_bp
+    call_bp,
+    who_bp,
+    info_humor_bp,
+    ball_bp
 )
 
 
@@ -34,6 +37,9 @@ async def run():
     dp.setup_blueprint(info_bp)
     dp.setup_blueprint(add_karma_bp)
     dp.setup_blueprint(call_bp)
+    dp.setup_blueprint(who_bp)
+    dp.setup_blueprint(info_humor_bp)
+    dp.setup_blueprint(ball_bp)
 
     # Всегда должен быть последним.
     dp.setup_blueprint(message_bp)  # порядок рега блупринтов не менять!!1

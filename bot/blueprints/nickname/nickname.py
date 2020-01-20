@@ -7,7 +7,6 @@ bp = Blueprint()
 
 @bp.message_handler(commands=["nickname", "nick"], args_range=(1, 10))
 async def change_nick(message: types.Message, data: dict):
-    print(1)
     nick = message.text.split()[1:]
     user: User = data["current_user"]
     await User.change_nick(user, " ".join(nick))
